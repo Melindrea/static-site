@@ -12,7 +12,7 @@ module.exports = function(grunt) {
             options: {
                 open: true,
                 base: [
-                    '<%= config.dist %>'
+                    '<%= directories.build.base %>'
                 ]
             }
         }

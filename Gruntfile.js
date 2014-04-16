@@ -17,14 +17,38 @@
 
 module.exports = function(grunt) {
 
-  // Project configuration.
-  grunt.initConfig({
+    // Project configuration.
+    grunt.initConfig({
+        pkg: require('./package'),
+        bower: require('./bower'),
+        directories: {
+            base: 'src',
+            assets: {
+                base: 'src/assets',
+                js: 'src/assets/scripts',
+                styles: 'src/assets/styles',
+                fonts: 'src/assets/fonts'
+            },
+            build: {
+                base: 'dist',
+                assets: 'dist/assets'
+            },
+            bower: 'src/bower_components'
+        },
+        files: {
+            js: [
+                'Gruntfile.js',
+                'grunt/{,*/}*.js',
+                '<%= directories.assets.js %>/**/*.js',
+                '!<%= directories.assets.js %>/vendor/*',
 
-    config: {
-        src: 'src',
-        dist: 'dist'
-    }
-  });
+            ],
+            json: [
+                '*.json',
+                '<%= directories.base %>/data/{,*/}*.json'
+            ]
+        }
+    });
 
     // show elapsed time at the end
     require('time-grunt')(grunt);
@@ -34,6 +58,8 @@ module.exports = function(grunt) {
     grunt.loadTasks('grunt/tasks');
 
     grunt.registerTask('default', [
+        'lint',
+        'clean:html',
         'build'
     ]);
 };

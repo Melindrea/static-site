@@ -5,14 +5,19 @@ module.exports = function(grunt) {
         pages: {
             options: {
                 flatten: true,
-                assets: '<%= config.dist %>/assets',
-                layout: '<%= config.src %>/templates/layouts/default.hbs',
-                data: '<%= config.src %>/data/*.{json,yml}',
-                partials: '<%= config.src %>/templates/partials/*.hbs',
-                plugins: ['assemble-contrib-permalinks','assemble-contrib-sitemap'],
+                assets: '<%= directories.build.base %>',
+                layout: '<%= directories.base %>/templates/layouts/default.hbs',
+                data: '<%= directories.base %>/data/*.{json,yml}',
+                partials: '<%= directories.base %>/templates/partials/*.hbs',
+                plugins: [
+                    'assemble-contrib-permalinks',
+                    'assemble-contrib-sitemap'
+                ],
             },
             files: {
-                '<%= config.dist %>/': ['<%= config.src %>/templates/pages/*.hbs']
+                '<%= directories.build.base %>/': [
+                    '<%= directories.base %>/templates/pages/*.hbs'
+                ]
             }
         }
     });

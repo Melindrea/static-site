@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 
     grunt.config('watch', {
         assemble: {
-            files: ['<%= config.src %>/{content,data,templates}/{,*/}*.{md,hbs,yml}'],
+            files: ['<%= directories.base %>/{content,data,templates}/{,*/}*.{md,hbs,yml}'],
             tasks: ['assemble']
         },
         livereload: {
@@ -11,10 +11,10 @@ module.exports = function(grunt) {
                 livereload: '<%= connect.options.livereload %>'
             },
             files: [
-                '<%= config.dist %>/{,*/}*.html',
-                '<%= config.dist %>/assets/{,*/}*.css',
-                '<%= config.dist %>/assets/{,*/}*.js',
-                '<%= config.dist %>/assets/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+                '<%= directories.build.base %>/{,*/}*.html',
+                '<%= directories.build.assets %>/{,*/}*.css',
+                '<%= directories.build.assets %>/{,*/}*.js',
+                '<%= directories.build.assets %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
             ]
         }
     });

@@ -1,16 +1,38 @@
 module.exports = function(grunt) {
     'use strict';
 
-    grunt.registerTask('build', function(target, type) {
-        if (target === 'html') {
+    grunt.registerTask('build', function(target) {
+        if (target === 'scripts') {
             return grunt.task.run([
-                'assemble'
+                'build:preAssets',
+                'modernizr',
+                'concat',
+                'clean:tmp',
+                'uglify'
+            ]);
+        } else if (target === 'html') {
+            return grunt.task.run([
+                'clean:html',
+                'assemble',
+                'beautify:html'
+            ]);
+        } else if (target === 'css') {
+            return grunt.task.run([
+                'build:preAssets',
+                'compass:dist',
+                'cssmin:dist',
+                'autoprefixer'
+            ]);
+        } else if (target === 'preAssets') {
+            return grunt.task.run([
+                'clean:assets'
             ]);
         }
 
         grunt.task.run([
-            'clean:html',
-            'build:html'
+            'build:html',
+            'build:scripts',
+            'build:css'
         ]);
     });
 };
