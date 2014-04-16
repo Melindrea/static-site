@@ -3,7 +3,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('server', function() {
         grunt.task.run([
-            'clean:dist',
             'build',
             'connect:livereload',
             'watch'

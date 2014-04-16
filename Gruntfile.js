@@ -26,30 +26,43 @@ module.exports = function(grunt) {
             dist: '<%= directories.build.base %>'
         },
         directories: {
-            base: 'src',
+            base: 'content',
+            theme: {
+                base: '<%= directories.base %>/theme',
+                templates: '<%= directories.theme.base %>/templates'
+            },
+            content: {
+                base: '<%= directories.base %>/content',
+                data: '<%= directories.content.base %>/data',
+                pages: '<%= directories.content.base %>/pages'
+            },
             assets: {
-                base: '<%= directories.base %>/assets',
+                base: '<%= directories.theme.base %>/assets',
                 js: '<%= directories.assets.base %>/scripts',
                 styles: '<%= directories.assets.base %>/styles',
                 fonts: '<%= directories.assets.base %>/fonts'
             },
             build: {
-                base: 'dist',
+                base: '.dist',
                 assets: '<%= directories.build.base %>/assets'
             },
-            bower: '<%= directories.base %>/bower_components'
+            bower: 'bower_components'
         },
         files: {
             js: [
                 'Gruntfile.js',
-                'grunt/{,*/}*.js',
+                'system/{,*/}*.js',
                 '<%= directories.assets.js %>/**/*.js',
                 '!<%= directories.assets.js %>/vendor/*',
 
             ],
             json: [
                 '*.json',
-                '<%= directories.base %>/data/{,*/}*.json'
+                '<%= directories.content.data %>/{,*/}*.json'
+            ],
+            styles: [
+                '<%= directories.assets.styles %>/{,*/}*.scss',
+                '<%= directories.bower %>/typeplate/{,*/}*.scss',
             ]
         }
     });

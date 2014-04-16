@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         },
         dist: {
             options: {
-                generatedImagesDir: '<%= directories.build.assets %>/assets/images/generated',
+                generatedImagesDir: '<%= directories.build.assets %>/images/generated',
                 noLineComments: true
             }
         },

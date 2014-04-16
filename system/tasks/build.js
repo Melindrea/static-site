@@ -4,7 +4,6 @@ module.exports = function(grunt) {
     grunt.registerTask('build', function(target) {
         if (target === 'scripts') {
             return grunt.task.run([
-                'build:preAssets',
                 'modernizr',
                 'concat',
                 'clean:tmp',
@@ -18,7 +17,6 @@ module.exports = function(grunt) {
             ]);
         } else if (target === 'css') {
             return grunt.task.run([
-                'build:preAssets',
                 'compass:dist',
                 'cssmin:dist',
                 'autoprefixer'
@@ -30,9 +28,10 @@ module.exports = function(grunt) {
         }
 
         grunt.task.run([
+            'build:preAssets',
             'build:html',
-            'build:scripts',
-            'build:css'
+            'build:css',
+            'build:scripts'
         ]);
     });
 };

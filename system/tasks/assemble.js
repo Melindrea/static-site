@@ -5,10 +5,12 @@ module.exports = function(grunt) {
         pages: {
             options: {
                 flatten: true,
-                assets: '<%= directories.build.base %>',
-                layout: '<%= directories.base %>/templates/layouts/default.hbs',
-                data: '<%= directories.base %>/data/*.{json,yml}',
-                partials: '<%= directories.base %>/templates/partials/*.hbs',
+                assets: '<%= directories.build.assets %>',
+                layout: 'default.hbs',
+                layoutdir: '<%= directories.theme.templates %>/layouts',
+                data: '<%= directories.content.data %>/*.{json,yml}',
+                partials: '<%= directories.theme.templates %>/partials/*.hbs',
+                helpers: ['<%= directories.theme.templates %>/helpers/*.js'],
                 plugins: [
                     'assemble-contrib-permalinks',
                     'assemble-contrib-sitemap'
@@ -16,7 +18,7 @@ module.exports = function(grunt) {
             },
             files: {
                 '<%= directories.build.base %>/': [
-                    '<%= directories.base %>/templates/pages/*.hbs'
+                    '<%= directories.content.pages %>/*.hbs'
                 ]
             }
         }
