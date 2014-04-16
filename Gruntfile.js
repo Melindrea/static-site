@@ -59,5 +59,5 @@ module.exports = function(grunt) {
     // load grunt tasks "just in time"
     require('jit-grunt')(grunt);
 
-    grunt.loadTasks('grunt/tasks');
+    grunt.loadTasks('system/tasks');
 };

@@ -20,7 +20,7 @@
     },
     "scripts": {
         "test": "grunt assemble",
-        "postinstall": "grunt githooks && bower install && bundle"
+        "postinstall": "grunt githooks && grunt vendor"
     },
     "devDependencies": {
         "assemble": "~0.4.37",

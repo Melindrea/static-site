@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     grunt.config('githooks', {
         stage: {
             options: {
-                template: 'grunt/hooks/stage.js.hbs'
+                template: 'system/hooks/stage.js.hbs'
             },
             'pre-commit': 'commit'
         }
