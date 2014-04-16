@@ -53,7 +53,8 @@
         "execSync": "^1.0.1-pre",
         "iniparser": "^1.0.5",
         "gravatar": "^1.0.6",
-        "grunt-githooks": "~0.3.1"
+        "grunt-githooks": "~0.3.1",
+        "underscore.string": "~2.3.3"
     },
     "licenses": [{
         "type": "MIT",
