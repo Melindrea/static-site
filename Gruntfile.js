@@ -21,6 +21,10 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: require('./package'),
         bower: require('./bower'),
+        deploy: {
+            'build_branch': 'gh-pages',
+            dist: '<%= directories.build.base %>'
+        }
         directories: {
             base: 'src',
             assets: {
