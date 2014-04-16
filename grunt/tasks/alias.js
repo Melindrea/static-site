@@ -10,4 +10,11 @@ module.exports = function(grunt) {
         'clean:html',
         'build'
     ]);
+
+    grunt.registerTask('deploy', [
+        'lint',
+        'clean:html',
+        'build',
+        'buildGhPages:production'
+    ]);
 };

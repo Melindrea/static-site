@@ -28,16 +28,16 @@ module.exports = function(grunt) {
         directories: {
             base: 'src',
             assets: {
-                base: 'src/assets',
-                js: 'src/assets/scripts',
-                styles: 'src/assets/styles',
-                fonts: 'src/assets/fonts'
+                base: '<%= directories.base %>/assets',
+                js: '<%= directories.assets.base %>/scripts',
+                styles: '<%= directories.assets.base %>/styles',
+                fonts: '<%= directories.assets.base %>/fonts'
             },
             build: {
                 base: 'dist',
-                assets: 'dist/assets'
+                assets: '<%= directories.build.base %>/assets'
             },
-            bower: 'src/bower_components'
+            bower: '<%= directories.base %>/bower_components'
         },
         files: {
             js: [
