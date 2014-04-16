@@ -60,10 +60,4 @@ module.exports = function(grunt) {
     require('jit-grunt')(grunt);
 
     grunt.loadTasks('grunt/tasks');
-
-    grunt.registerTask('default', [
-        'lint',
-        'clean:html',
-        'build'
-    ]);
 };
