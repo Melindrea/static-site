@@ -15,6 +15,12 @@ module.exports = function(grunt) {
                     'assemble-contrib-permalinks',
                     'assemble-contrib-sitemap'
                 ],
+                sitemap: {
+                    homepage: '<%= homepage %>',
+                    changefreq: 'weekly',
+                    relativedest: true,
+                    dest: '<%= directories.build.base %>'
+                }
             },
             files: {
                 '<%= directories.build.base %>/': [

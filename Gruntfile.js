@@ -21,6 +21,7 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: require('./package'),
         bower: require('./bower'),
+        homepage: 'http://melindrea.github.io/static-site',
         deploy: {
             'build_branch': 'gh-pages',
             dist: '<%= directories.build.base %>'
