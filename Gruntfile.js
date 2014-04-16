@@ -24,7 +24,7 @@ module.exports = function(grunt) {
         deploy: {
             'build_branch': 'gh-pages',
             dist: '<%= directories.build.base %>'
-        }
+        },
         directories: {
             base: 'src',
             assets: {
