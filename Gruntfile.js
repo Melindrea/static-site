@@ -30,6 +30,7 @@ module.exports = function(grunt) {
             }
         },
         homepage: 'http://melindrea.github.io/static-site',
+        theme: 'default',
         deploy: {
             'build_branch': 'gh-pages',
             dist: '<%= directories.build.base %>'
@@ -37,7 +38,7 @@ module.exports = function(grunt) {
         directories: {
             base: 'content',
             theme: {
-                base: '<%= directories.base %>/theme',
+                base: '<%= directories.base %>/themes/<%= theme %>',
                 templates: '<%= directories.theme.base %>/templates'
             },
             content: {
