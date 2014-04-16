@@ -17,92 +17,23 @@
 
 module.exports = function(grunt) {
 
-  require('time-grunt')(grunt);
-
   // Project configuration.
   grunt.initConfig({
 
     config: {
-      src: 'src',
-      dist: 'dist'
-    },
-
-    watch: {
-      assemble: {
-        files: ['<%= config.src %>/{content,data,templates}/{,*/}*.{md,hbs,yml}'],
-        tasks: ['assemble']
-      },
-      livereload: {
-        options: {
-          livereload: '<%= connect.options.livereload %>'
-        },
-        files: [
-          '<%= config.dist %>/{,*/}*.html',
-          '<%= config.dist %>/assets/{,*/}*.css',
-          '<%= config.dist %>/assets/{,*/}*.js',
-          '<%= config.dist %>/assets/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-        ]
-      }
-    },
-
-    connect: {
-      options: {
-        port: 9000,
-        livereload: 35729,
-        // change this to '0.0.0.0' to access the server from outside
-        hostname: 'localhost'
-      },
-      livereload: {
-        options: {
-          open: true,
-          base: [
-            '<%= config.dist %>'
-          ]
-        }
-      }
-    },
-
-    assemble: {
-      pages: {
-        options: {
-          flatten: true,
-          assets: '<%= config.dist %>/assets',
-          layout: '<%= config.src %>/templates/layouts/default.hbs',
-          data: '<%= config.src %>/data/*.{json,yml}',
-          partials: '<%= config.src %>/templates/partials/*.hbs',
-          plugins: ['assemble-contrib-permalinks','assemble-contrib-sitemap'],
-        },
-        files: {
-          '<%= config.dist %>/': ['<%= config.src %>/templates/pages/*.hbs']
-        }
-      }
-    },
-
-    // Before generating any new files,
-    // remove any previously-created files.
-    clean: ['<%= config.dist %>/**/*.{html,xml}']
-
+        src: 'src',
+        dist: 'dist'
+    }
   });
 
-  grunt.loadNpmTasks('assemble');
-  grunt.loadNpmTasks('grunt-contrib-clean');
-  grunt.loadNpmTasks('grunt-contrib-connect');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+    // show elapsed time at the end
+    require('time-grunt')(grunt);
+    // load grunt tasks "just in time"
+    require('jit-grunt')(grunt);
 
-  grunt.registerTask('server', [
-    'clean',
-    'assemble',
-    'connect:livereload',
-    'watch'
-  ]);
+    grunt.loadTasks('grunt/tasks');
 
-  grunt.registerTask('build', [
-    'clean',
-    'assemble'
-  ]);
-
-  grunt.registerTask('default', [
-    'build'
-  ]);
-
+    grunt.registerTask('default', [
+        'build'
+    ]);
 };
