@@ -11,7 +11,7 @@ module.exports = function(grunt) {
             ]);
         } else if (target === 'html') {
             return grunt.task.run([
-                'clean:html',
+                'clean:build',
                 'assemble',
                 'beautify:html'
             ]);
@@ -21,14 +21,9 @@ module.exports = function(grunt) {
                 'cssmin:dist',
                 'autoprefixer'
             ]);
-        } else if (target === 'preAssets') {
-            return grunt.task.run([
-                'clean:assets'
-            ]);
         }
 
         grunt.task.run([
-            'build:preAssets',
             'build:html',
             'build:css',
             'build:scripts'
