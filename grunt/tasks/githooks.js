@@ -7,13 +7,6 @@ module.exports = function(grunt) {
                 template: 'grunt/hooks/stage.js.hbs'
             },
             'pre-commit': 'commit'
-        },
-        update: {
-            options: {
-                template: 'grunt/hooks/update.js.hbs'
-            },
-            'post-merge': true,
-            'post-checkout': true
         }
     });
 };

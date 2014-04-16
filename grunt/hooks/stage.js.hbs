@@ -5,7 +5,7 @@ var sh = require('execSync').run;
 var branchName = require('execSync').exec('git branch | grep \'*\' | sed \'s/* //\'').stdout;
 
 // Don't run on rebase
-if (branchName !== '(no branch)') {
+if (branchName !== '(no branch)' && branchName !== 'gh-pages') {
     exec('git diff --cached --quiet', function (err, stdout, stderr) {
         /*jshint unused: false*/
         'use strict';
