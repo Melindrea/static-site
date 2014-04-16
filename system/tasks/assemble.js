@@ -20,11 +20,15 @@ module.exports = function(grunt) {
                     changefreq: 'weekly',
                     relativedest: true,
                     dest: '<%= directories.build.base %>'
-                }
+                },
+                users: '<%= users %>'
             },
             files: {
                 '<%= directories.build.base %>/': [
                     '<%= directories.content.pages %>/*.hbs'
+                ],
+                '<%= directories.build.base %>/posts/': [
+                    '<%= directories.content.posts %>/*.hbs'
                 ]
             }
         }

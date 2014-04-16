@@ -1,0 +1,7 @@
+<ul class="nav navbar-nav">
+    {{#each items}}
+    <li{{#attributes}} {{{ this }}}{{/attributes}}>
+      <a href="{{ href }}">{{ text }}</a>
+    </li>
+    {{/each}}
+  </ul>

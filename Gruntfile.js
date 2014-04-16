@@ -21,6 +21,14 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: require('./package'),
         bower: require('./bower'),
+        users: {
+            Melindrea: {
+                twitter: 'melindrea82',
+                displayName: 'Marie Hogebrandt',
+                google: 'https://plus.google.com/107792424782860612529?rel=author',
+                email: 'iam@mariehogebrandt.se'
+            }
+        },
         homepage: 'http://melindrea.github.io/static-site',
         deploy: {
             'build_branch': 'gh-pages',
@@ -35,7 +43,8 @@ module.exports = function(grunt) {
             content: {
                 base: '<%= directories.base %>/content',
                 data: '<%= directories.content.base %>/data',
-                pages: '<%= directories.content.base %>/pages'
+                pages: '<%= directories.content.base %>/pages',
+                posts: '<%= directories.content.base %>/posts'
             },
             assets: {
                 base: '<%= directories.theme.base %>/assets',

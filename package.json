@@ -50,7 +50,9 @@
         "grunt-contrib-copy": "^0.5.0",
         "grunt-shell": "^0.6.4",
         "grunt-build-gh-pages": "^1.0.3",
-        "execSync": "^1.0.1-pre"
+        "execSync": "^1.0.1-pre",
+        "iniparser": "^1.0.5",
+        "gravatar": "^1.0.6"
     },
     "licenses": [{
         "type": "MIT",
