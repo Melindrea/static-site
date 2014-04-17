@@ -21,18 +21,15 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: require('./package'),
         bower: require('./bower'),
-        settings: require('./config/settings'),
-        theme: 'default',
+        site: grunt.file.readYAML('./config/site.yml'),
+        vendor: grunt.file.readJSON('.bowerrc').directory,
         deploy: {
-            'build_branch': 'gh-pages',
-            dist: '<%= directories.build.base %>'
+            'build_branch': '<%= site.branch %>',
+            dist: '<=% site.dest %>'
         },
         directories: {
             base: 'config',
-            theme: {
-                base: '<%= directories.base %>/themes/<%= theme %>',
-                templates: '<%= directories.theme.base %>/templates'
-            },
+            theme: '<%= directories.base %>/themes/<%= site.theme %>',
             content: {
                 base: '<%= directories.base %>/content',
                 data: '<%= directories.content.base %>/data',
@@ -40,16 +37,12 @@ module.exports = function(grunt) {
                 posts: '<%= directories.content.base %>/posts'
             },
             assets: {
-                base: '<%= directories.theme.base %>/assets',
+                base: '<%= directories.theme %>/assets',
                 js: '<%= directories.assets.base %>/scripts',
                 styles: '<%= directories.assets.base %>/styles',
                 fonts: '<%= directories.assets.base %>/fonts'
             },
-            build: {
-                base: '.dist',
-                assets: '<%= directories.build.base %>/assets'
-            },
-            bower: 'bower_components'
+            bower: '<%= vendor %>'
         },
         files: {
             js: [

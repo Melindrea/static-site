@@ -1,0 +1,82 @@
+# =============================================
+# Menu
+# =============================================
+
+menu:
+    Index: index.html
+    Blog: posts/index.html
+
+# =============================================
+# Site metadata
+# =============================================
+
+brand:            ASSEMBLE
+title:            BOILERPLATE
+lead:             The most awe inspiring static site boilerplate in Northern Kentucky.
+keywords:         <%= pkg.keywords %>
+
+version:          <%= pkg.version %>
+description:      <%= pkg.description %>
+license:
+    type:           <%= pkg.licenses[0].type %>
+    url:            <%= pkg.licenses[0].url %>
+
+# SEO/SEM
+ga:
+  id:             UA-35547601-2
+  domain:         false
+  siteid:         false
+  tags:           false
+
+# Links
+url:
+  repo:           <%= pkg.homepage %>
+  bugs:           <%= pkg.bugs.url %>?state=open
+
+  # Site
+  about:          <%= site.url.domain %>/about/
+  blog:           <%= site.url.domain %>/blog/
+
+# =============================================
+# Gravatar
+# =============================================
+gravatar:
+    s: 51
+    d: mm
+    r: g
+
+# =============================================
+# Build config
+# =============================================
+
+root:             .dist
+dest:             <%= site.root %>
+assets:           <%= site.dest %>/assets
+branch:           gh-pages
+
+# Templates
+templates:        <%= directories.theme %>/templates
+partials:         <%= site.templates %>/partials/*.hbs
+layouts:          <%= site.templates %>/layouts
+layout:           default.hbs
+
+# Extensions
+helpers:
+    - <%= site.templates %>/helpers/*.js
+    - system/helpers/*.js
+plugins:
+  - assemble-contrib-permalinks
+  - assemble-contrib-sitemap
+
+# Theme
+theme:            default
+
+# Domain
+domain: http://melindrea.github.io/static-site
+
+# Sitemap
+sitemap:
+    homepage: '<%= site.domain %>'
+    changefreq: weekly,
+    relativedest: true,
+    dest: '<%= site.root %>'

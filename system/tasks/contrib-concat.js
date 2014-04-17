@@ -12,7 +12,7 @@ module.exports = function(grunt) {
                 '<%= directories.assets.js %>/vendor/modernizr.dev.js'
             ],
             // the location of the resulting JS file
-            dest: '<%= directories.build.assets %>/scripts/head.max.js'
+            dest: '<%= site.assets %>/scripts/head.max.js'
         },
         main: {
             // the files to concatenate
@@ -23,7 +23,7 @@ module.exports = function(grunt) {
                 '<%= directories.assets.js %>/main.js'
             ],
             // the location of the resulting JS file
-            dest: '<%= directories.build.assets %>/scripts/main.max.js'
+            dest: '<%= site.assets %>/scripts/main.max.js'
         }
     });
 };

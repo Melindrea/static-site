@@ -9,9 +9,9 @@ module.exports = function(grunt) {
         dist: {
             files: [{
                 expand: true,
-                cwd: '<%= directories.build.assets %>/styles/',
+                cwd: '<%= site.assets %>/styles/',
                 src: '{,*/}*.css',
-                dest: '<%= directories.build.assets %>/styles/'
+                dest: '<%= site.assets %>/styles/'
             }]
         }
     });

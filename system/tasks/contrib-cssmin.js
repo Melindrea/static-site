@@ -4,9 +4,9 @@ module.exports = function(grunt) {
     grunt.config('cssmin', {
         dist: {
             expand: true,
-            cwd: '<%= directories.build.assets %>/styles',
+            cwd: '<%= site.assets %>/styles',
             src: ['{,*/}*.max.css'],
-            dest: '<%= directories.build.assets %>/styles',
+            dest: '<%= site.assets %>/styles',
             ext: '.css'
         }
     });

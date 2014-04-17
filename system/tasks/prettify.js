@@ -8,10 +8,10 @@ module.exports = function(grunt) {
         // Prettify a directory of files
         all: {
             expand: true,
-            cwd: '<%= directories.build.base %>/',
+            cwd: '<%= site.dest %>/',
             ext: '.html',
             src: ['**/*.html'],
-            dest: '<%= directories.build.base %>/'
+            dest: '<%= site.dest %>/'
         }
     });
 };

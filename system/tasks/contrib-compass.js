@@ -4,10 +4,10 @@ module.exports = function(grunt) {
     grunt.config('compass', {
         options: {
             sassDir: '<%= directories.assets.styles %>',
-            cssDir: '<%= directories.build.assets %>/styles',
-            generatedImagesDir: '<%= directories.build.assets %>/images/generated',
+            cssDir: '<%= site.assets %>/styles',
+            generatedImagesDir: '<%= site.assets %>/images/generated',
             imagesDir: '<%= directories.base %>/media/images',
-            javascriptsDir: '<%= directories.build.assets %>/scripts',
+            javascriptsDir: '<%= site.assets %>/scripts',
             fontsDir: '<%= directories.assets.fonts %>',
             httpImagesPath: '/assets/media/images',
             httpGeneratedImagesPath: '/assets/images/generated',
@@ -22,7 +22,7 @@ module.exports = function(grunt) {
         },
         dist: {
             options: {
-                generatedImagesDir: '<%= directories.build.assets %>/images/generated',
+                generatedImagesDir: '<%= site.assets %>/images/generated',
                 noLineComments: true
             }
         },

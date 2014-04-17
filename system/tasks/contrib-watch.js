@@ -11,10 +11,10 @@ module.exports = function(grunt) {
                 livereload: '<%= connect.options.livereload %>'
             },
             files: [
-                '<%= directories.build.base %>/{,*/}*.html',
-                '<%= directories.build.assets %>/{,*/}*.css',
-                '<%= directories.build.assets %>/{,*/}*.js',
-                '<%= directories.build.assets %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+                '<%= site.dest %>/{,*/}*.html',
+                '<%= site.assets %>/{,*/}*.css',
+                '<%= site.assets %>/{,*/}*.js',
+                '<%= site.assets %>/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
             ]
         }
     });

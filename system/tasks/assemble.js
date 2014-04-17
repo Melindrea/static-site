@@ -4,35 +4,24 @@ module.exports = function(grunt) {
     grunt.config('assemble', {
         options: {
             flatten: true,
-            assets: '<%= directories.build.assets %>',
-            themeTemplates: path.resolve('<%= directories.theme.templates %>'),
-            layout: 'default.hbs',
-            layoutdir: '<%= directories.theme.templates %>/layouts',
+            assets: '<%= site.assets %>',
+            themeTemplates: path.resolve('<%= site.templates %>'),
+            layout: '<%= site.layout %>',
+            layoutdir: '<%= site.layouts %>',
             data: '<%= directories.content.data %>/*.{json,yml}',
-            partials: '<%= directories.theme.templates %>/partials/*.hbs',
-            helpers: [
-                '<%= directories.theme.templates %>/helpers/*.js',
-                'system/helpers/*.js'
-            ],
-            plugins: [
-                'assemble-contrib-permalinks',
-                'assemble-contrib-sitemap'
-            ],
-            sitemap: {
-                homepage: '<%= settings.homepage %>',
-                changefreq: 'weekly',
-                relativedest: true,
-                dest: '<%= directories.build.base %>'
-            },
+            partials: '<%= site.partials %>',
+            helpers: '<%= site.helpers %>',
+            plugins: '<%= site.plugins %>',
+            sitemap: '<%= site.sitemap %>',
             users: require('../../config/users'),
-            settings: require('../../config/settings'),
+            site: '<%= site %>',
             permalinks: {
                 preset: 'pretty'
             }
         },
         pages: {
             files: {
-                '<%= directories.build.base %>/': [
+                '<%= site.dest %>/': [
                     '<%= directories.content.pages %>/*.hbs'
                 ]
             }
@@ -52,7 +41,7 @@ module.exports = function(grunt) {
                 }
             },
             files: {
-                '<%= directories.build.base %>/posts/': [
+                '<%= site.dest %>/posts/': [
                     '<%= directories.content.posts %>/*.hbs'
                 ]
             }

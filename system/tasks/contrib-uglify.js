@@ -11,8 +11,8 @@ module.exports = function(grunt) {
         },
         js: {
             files: {
-                '<%= directories.build.assets %>/scripts/head.js': ['<%= concat.head.dest %>'],
-                '<%= directories.build.assets %>/scripts/main.js': ['<%= concat.main.dest %>']
+                '<%= site.assets %>/scripts/head.js': ['<%= concat.head.dest %>'],
+                '<%= site.assets %>/scripts/main.js': ['<%= concat.main.dest %>']
             }
         }
     });

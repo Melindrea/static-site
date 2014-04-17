@@ -3,6 +3,6 @@ module.exports = function(grunt) {
 
     grunt.config('clean', {
         tmp: '.tmp',
-        build: '<%= directories.build.base %>'
+        build: '<%= site.dest %>'
     });
 };

@@ -1,11 +1,12 @@
 module.exports.register = function(Handlebars, options) {
     'use strict';
 
-    Handlebars.registerHelper('menu', function(items, currentPage) {
+    Handlebars.registerHelper('menu', function(currentPage) {
         var fs = require('fs'),
             templateName = options.themeTemplates + '/partials/menu.hbs',
             template, menuItems = [],
-            dest = options.sitemap.dest;
+            dest = options.site.dest,
+            items = options.site.menu;
 
         currentPage = currentPage.replace(dest, '');
         Object.keys(items).forEach(function(element) {

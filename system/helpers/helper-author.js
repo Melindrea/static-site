@@ -9,7 +9,7 @@ module.exports.register = function(Handlebars, options) {
             // configFile = homeDir + '/.gitconfig',
             // gitconfig,
             user,
-            gravatarOptions = options.settings.gravatar,
+            gravatarOptions = options.site.gravatar,
             templateName = options.themeTemplates + '/partials/person.hbs',
             template;
 
