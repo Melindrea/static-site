@@ -9,18 +9,23 @@ module.exports.register = function(Handlebars, options) {
             items = options.site.menu;
 
         currentPage = currentPage.replace(dest, '');
-        Object.keys(items).forEach(function(element) {
-            var path = '/' + this[element],
-                el = {
-                    text: element,
-                    href: path
-                };
 
-            if (path === currentPage) {
+        items.forEach(function(element) {
+            var path = '/' + element.href;
+            if (path === '/null') {
+                path = '/';
+            }
+            var el = {
+                text: element.name,
+                href: path
+            };
+            console.log(currentPage);
+            if (path + '/index.html' === currentPage ||
+                (path === '/' && '/index.html' === currentPage)) {
                 el.attributes = 'class="active"';
             }
             menuItems.push(el);
-        }, items);
+        });
 
         menuItems = {
             items: menuItems

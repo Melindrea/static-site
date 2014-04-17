@@ -3,8 +3,13 @@
 # =============================================
 
 menu:
-    Index: index.html
-    Blog: posts/index.html
+    -   name: Index
+        href:
+        submenu:
+            -   name: Index2
+                href: index2.html
+    -   name: Blog
+        href: posts
 
 # =============================================
 # Site metadata
@@ -76,7 +81,7 @@ domain: http://melindrea.github.io/static-site
 
 # Sitemap
 sitemap:
-    homepage: '<%= site.domain %>'
+    homepage: <%= site.domain %>
     changefreq: weekly,
     relativedest: true,
-    dest: '<%= site.root %>'
+    dest: <%= site.root %>
