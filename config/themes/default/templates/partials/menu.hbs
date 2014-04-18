@@ -1,7 +1,8 @@
-<ul class="nav navbar-nav">
+<ul>
     {{#each items}}
-    <li{{#attributes}} {{{ this }}}{{/attributes}}>
-      <a href="{{ href }}">{{ text }}</a>
+    <li>
+        <a href="{{ href }}"{{#current}} aria-describedby="current"{{/current}}>{{ text }}</a>
     </li>
     {{/each}}
-  </ul>
+</ul>
+<div id="current">Current page</div>

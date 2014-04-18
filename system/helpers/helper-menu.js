@@ -1,28 +1,34 @@
 module.exports.register = function(Handlebars, options) {
     'use strict';
 
-    Handlebars.registerHelper('menu', function(currentPage) {
+    Handlebars.registerHelper('menu', function(currentPage, maxLevels, startingLevel) {
         var fs = require('fs'),
             templateName = options.themeTemplates + '/partials/menu.hbs',
             template, menuItems = [],
             dest = options.site.dest,
             items = options.site.menu;
+        if (isNaN(maxLevels)) {
+            maxLevels = 1;
+        }
+        if (isNaN(startingLevel)) {
+            startingLevel = 1;
+        }
 
         currentPage = currentPage.replace(dest, '');
 
         items.forEach(function(element) {
             var path = '/' + element.href;
-            if (path === '/null') {
-                path = '/';
-            }
+            path = path.replace('//', '/');
             var el = {
                 text: element.name,
                 href: path
             };
-            console.log(currentPage);
+            if (maxLevels > 1 && element.submenu) {
+                console.log(element.name);
+            }
             if (path + '/index.html' === currentPage ||
                 (path === '/' && '/index.html' === currentPage)) {
-                el.attributes = 'class="active"';
+                el.current = true;
             }
             menuItems.push(el);
         });

@@ -4,7 +4,7 @@
 
 menu:
     -   name: Index
-        href:
+        href: /
         submenu:
             -   name: Index2
                 href: index2.html
@@ -27,7 +27,7 @@ license:
     url:            <%= pkg.licenses[0].url %>
 
 # SEO/SEM
-ga:
+analytics:
   id:             UA-35547601-2
   domain:         false
   siteid:         false
@@ -35,12 +35,17 @@ ga:
 
 # Links
 url:
-  repo:           <%= pkg.homepage %>
-  bugs:           <%= pkg.bugs.url %>?state=open
+    repo:           <%= pkg.homepage %>
+    bugs:           <%= pkg.bugs.url %>?state=open
 
-  # Site
-  about:          <%= site.url.domain %>/about/
-  blog:           <%= site.url.domain %>/blog/
+# Permalinks
+permalinks:
+    default:
+        preset: pretty
+    titleSlug:
+        structure: :slug-:00/index.html
+        patterns: <%= patterns %>
+
 
 # =============================================
 # Gravatar
@@ -65,10 +70,31 @@ partials:         <%= site.templates %>/partials/*.hbs
 layouts:          <%= site.templates %>/layouts
 layout:           default.hbs
 
+# Data
+content:        <%= directories.base %>/content
+data:           <%= site.content %>/data/*.{json,yml}
+
+# Compilations
+pages:
+    dest: <%= site.dest %>/
+    files:
+        - <%= site.content %>/pages/**/*.hbs
+
+posts:
+    dest: <%= site.dest %>/posts/
+    files:
+        - <%= site.content %>/posts/**/*.hbs
+    options:
+        layout: post.hbs
+        permalinks: <%= site.permalinks.titleSlug %>
+
+
+
 # Extensions
 helpers:
-    - <%= site.templates %>/helpers/*.js
+    - <%= directories.theme %>/helpers/*.js
     - system/helpers/*.js
+
 plugins:
   - assemble-contrib-permalinks
   - assemble-contrib-sitemap
@@ -85,3 +111,4 @@ sitemap:
     changefreq: weekly,
     relativedest: true,
     dest: <%= site.root %>
+

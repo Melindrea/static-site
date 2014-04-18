@@ -23,6 +23,14 @@ module.exports = function(grunt) {
         bower: require('./bower'),
         site: grunt.file.readYAML('./config/site.yml'),
         vendor: grunt.file.readJSON('.bowerrc').directory,
+        users: require('./config/users'),
+        patterns: [{
+            pattern: ':slug',
+            replacement: function() {
+                var _ = require('underscore.string');
+                return _.slugify(this.title);
+            }
+        }],
         deploy: {
             'build_branch': '<%= site.branch %>',
             dist: '<=% site.dest %>'
@@ -30,12 +38,6 @@ module.exports = function(grunt) {
         directories: {
             base: 'config',
             theme: '<%= directories.base %>/themes/<%= site.theme %>',
-            content: {
-                base: '<%= directories.base %>/content',
-                data: '<%= directories.content.base %>/data',
-                pages: '<%= directories.content.base %>/pages',
-                posts: '<%= directories.content.base %>/posts'
-            },
             assets: {
                 base: '<%= directories.theme %>/assets',
                 js: '<%= directories.assets.base %>/scripts',
@@ -54,7 +56,7 @@ module.exports = function(grunt) {
             ],
             json: [
                 '*.json',
-                '<%= directories.content.data %>/{,*/}*.json'
+                '<%= site.data %>/{,*/}*.json'
             ],
             styles: [
                 '<%= directories.assets.styles %>/{,*/}*.scss',
@@ -69,4 +71,5 @@ module.exports = function(grunt) {
     require('jit-grunt')(grunt);
 
     grunt.loadTasks('system/tasks');
+    grunt.loadTasks('config');
 };
